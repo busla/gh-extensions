@@ -39,11 +39,12 @@ gh pru
 1. Make sure you have the GitHub CLI installed. If not, follow the [official installation guide](https://github.com/cli/cli#installation).
 
 2. Clone this repository
-3. Add the extensions to your GitHub CLI:
+3. Handy commands
 
 ```bash
-   gh extension create gh-prc
-   gh extension create gh-pru
+gh extension install . # installs extensions from the current directory
+gh extension upgrade . # upgrades extensions from the current directory
+gh extension remove pru # remove pru extension
 ```
 
 4. Copy the content of each extension file into its respective newly created file.
