@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -e
+
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+
+# Get the default remote for the current branch
+DEFAULT_REMOTE=$(git config --get "branch.$CURRENT_BRANCH.remote" || echo "origin")
+
+# Get the title from the first commit message
+TITLE=$(git log --format=%s -n 1 HEAD)
+
+# Get the default branch
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+
+# Push the current branch to the default remote
+git push -u "$DEFAULT_REMOTE" "$CURRENT_BRANCH"
+
+# Create the PR with the title, empty body, and autofilled options
+gh pr create \
+  -t "$TITLE" \
+  -B "$DEFAULT_BRANCH" \
+  -H "$CURRENT_BRANCH" \
+  --fill \
+  "$@"
+
+# Get the PR URL
+gh pr view --json url -q .url | wl-copy
+
+# Open the PR in the browser
+gh pr view --web
