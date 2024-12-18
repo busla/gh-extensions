@@ -60,7 +60,8 @@ gh pru
 After installation, you can use these extensions as part of your gh commands:
 
 - To create a pull request: `gh prc`
-- To get the URL of the current pull request and copy it to your clipboard: `gh pru | <wl-copy|some-other-cb>`
+- Output the URL of the current pull request: `gh pru | <wl-copy|some-other-cb>`
+  - copy it to your clipboard (e.g. `wl-copy`): `gh pru | wl-copy`
 
 ## Contributing
 
