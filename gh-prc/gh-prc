@@ -23,8 +23,20 @@ gh pr create \
   --fill \
   "$@"
 
-# Get the PR URL
-gh pr view --json url -q .url | wl-copy
+# Get the PR URL and copy it to clipboard
+PR_URL=$(gh pr view --json url -q .url)
+
+# Check the operating system and use the appropriate clipboard command
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "$PR_URL" | pbcopy
+  echo "PR URL copied to clipboard using pbcopy"
+elif command -v wl-copy >/dev/null 2>&1; then
+  echo "$PR_URL" | wl-copy
+  echo "PR URL copied to clipboard using wl-copy"
+else
+  echo "Unable to copy PR URL to clipboard. Please install pbcopy (macOS) or wl-copy (Wayland) for clipboard support."
+  echo "PR URL: $PR_URL"
+fi
 
 # Open the PR in the browser
 gh pr view --web

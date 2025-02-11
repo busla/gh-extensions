@@ -8,7 +8,7 @@ This repository contains custom extensions for the GitHub CLI (gh) to enhance yo
 
 This extension simplifies the process of creating a pull request from your current branch.
 
-#### Features:
+#### Features
 
 - Automatically pushes your current branch to the default remote
 - Uses the first commit message as the PR title
@@ -16,7 +16,7 @@ This extension simplifies the process of creating a pull request from your curre
 - Copies the PR URL to your clipboard
 - Opens the PR in your default web browser
 
-#### Usage:
+#### Usage
 
 ```
 gh prc
@@ -26,11 +26,11 @@ gh prc
 
 This extension quickly retrieves the URL of the current pull request.
 
-#### Features:
+#### Features
 
 - Outputs the URL of the current pull request
 
-#### Usage:
+#### Usage
 
 gh pru
 
@@ -42,19 +42,13 @@ gh pru
 3. Handy commands
 
 ```bash
+# enter the extension and install
+cd <extension>
 gh extension install . # installs extensions from the current directory
-gh extension upgrade . # upgrades extensions from the current directory
-gh extension remove pru # remove pru extension
+gh extension remove <extension> # remove extension
 ```
 
 4. Copy the content of each extension file into its respective newly created file.
-
-5. Make the extension files executable:
-
-```bash
-   chmod +x gh-prc
-   chmod +x gh-pru
-```
 
 ## Usage
 
@@ -62,7 +56,7 @@ After installation, you can use these extensions as part of your gh commands:
 
 - To create a pull request: `gh prc`
 - Output the URL of the current pull request: `gh pru`
-  - copy it to your clipboard (e.g. `wl-copy`): `gh pru | wl-copy`
+  - copy it to your clipboard: `gh pru | <wl-copy|pbcopy>`
 
 ## Contributing
 
